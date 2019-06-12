@@ -16,7 +16,8 @@ public class GameManagement : MonoBehaviour
     public GUISkin skin;
     public Rect timerRect;
     public Text endOfTime;
-
+    public Color defaultColorTimer;
+    public Color warningColorTimer;
 
     public float startTime;
     private string currentTime;
@@ -33,8 +34,8 @@ public class GameManagement : MonoBehaviour
         startTime -= Time.deltaTime;
         currentTime = string.Format("{0:0.0}", startTime);
 
-
-        if(startTime <= 0)
+        
+        if (startTime <= 0)
         {
             startTime = 0;
             StartCoroutine(Timer());
@@ -45,6 +46,11 @@ public class GameManagement : MonoBehaviour
                 Time.timeScale = 1;
             }
         }
+
+        if (startTime < 5f)
+            skin.GetStyle("Timer").normal.textColor = warningColorTimer;
+        else
+            skin.GetStyle("Timer").normal.textColor = defaultColorTimer;
     }
 
     void OnGUI()

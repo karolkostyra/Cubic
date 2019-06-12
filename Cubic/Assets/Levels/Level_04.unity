@@ -1170,7 +1170,9 @@ MonoBehaviour:
     width: 350
     height: 350
   endOfTime: {fileID: 39539291}
-  startTime: 6
+  defaultColorTimer: {r: 1, g: 1, b: 1, a: 1}
+  warningColorTimer: {r: 1, g: 0, b: 0, a: 1}
+  startTime: 10
 --- !u!4 &1577679466
 Transform:
   m_ObjectHideFlags: 0
