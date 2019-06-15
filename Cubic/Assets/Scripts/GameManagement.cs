@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -6,11 +7,11 @@ using UnityEngine.SceneManagement;
 
 public class GameManagement : MonoBehaviour
 {
-    public int currentScore;
-    public int highScore;
+    public static int currentScore;
+    public static int highScore;
 
     public static int currentLevel;// = SceneManager.GetActiveScene().buildIndex;
-    public int unlockedLevel;
+    public static int unlockedLevel;
 
     public GUISkin skin;
     public Rect timerRect;
@@ -32,7 +33,7 @@ public class GameManagement : MonoBehaviour
     {
         startTime -= Time.deltaTime;
         currentTime = string.Format("{0:0.0}", startTime);
-        
+
         
         if (startTime <= 0)
         {

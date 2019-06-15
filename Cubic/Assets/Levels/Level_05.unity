@@ -870,7 +870,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1577679465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -883,9 +883,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 586bc56a23e90654da392dd4d0eb2f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentScore: 0
-  highScore: 0
-  unlockedLevel: 0
   skin: {fileID: 0}
   timerRect:
     serializedVersion: 2
@@ -894,8 +891,6 @@ MonoBehaviour:
     width: 350
     height: 350
   endOfTime: {fileID: 0}
-  defaultColorTimer: {r: 0, g: 0, b: 0, a: 0}
-  warningColorTimer: {r: 0, g: 0, b: 0, a: 0}
   startTime: 3
 --- !u!4 &1577679466
 Transform:
