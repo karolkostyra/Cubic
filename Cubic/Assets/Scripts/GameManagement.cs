@@ -21,12 +21,14 @@ public class GameManagement : MonoBehaviour
 
     public float startTime;
     private string currentTime;
+    private float timeWarning;
 
 
     void Start()
     {
         currentLevel = 1;
         endOfTime.enabled = false;
+        timeWarning = startTime / 3;
     }
 
     void Update()
@@ -34,7 +36,6 @@ public class GameManagement : MonoBehaviour
         startTime -= Time.deltaTime;
         currentTime = string.Format("{0:0.0}", startTime);
 
-        
         if (startTime <= 0)
         {
             startTime = 0;
@@ -47,7 +48,7 @@ public class GameManagement : MonoBehaviour
             }
         }
 
-        if (startTime < 5f)
+        if (startTime < timeWarning)
             skin.GetStyle("Timer").normal.textColor = warningColorTimer;
         else
             skin.GetStyle("Timer").normal.textColor = defaultColorTimer;
@@ -62,7 +63,8 @@ public class GameManagement : MonoBehaviour
 
     public static void CompleteLevel()
     {
-        if(currentLevel < 7)
+        int numberOfLevels = SceneManager.sceneCountInBuildSettings - 2;
+        if (currentLevel < numberOfLevels)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
