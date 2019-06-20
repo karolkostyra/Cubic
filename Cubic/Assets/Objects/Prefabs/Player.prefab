@@ -121,6 +121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7f78ae6e994be64faaee6be76f2e063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manager: {fileID: 0}
   moveSpeed: 50
+  jumpAvailability: 1
   deathParticles: {fileID: 7750140288415665519, guid: 38092a267f38670489ae4220461fe90b,
     type: 3}

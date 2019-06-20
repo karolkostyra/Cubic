@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
 
 public class PlayerMovement : MonoBehaviour
 {
+    public GameManagement manager;
+
     Rigidbody rb;
     public float moveSpeed;
     public bool jumpAvailability = true;
@@ -80,7 +78,9 @@ public class PlayerMovement : MonoBehaviour
 
         if (other.transform.tag == "Goal")
         {
-            GameManagement.CompleteLevel();
+            //GameManagement.CompleteLevel();
+            manager = manager.GetComponent<GameManagement>();
+            manager.CompleteLevel();
         }
     }
 

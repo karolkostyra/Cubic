@@ -499,6 +499,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3900015275298460781, guid: 2599effab47964d43a19558d57a0c5c9,
+        type: 3}
+      propertyPath: manager
+      value: 
+      objectReference: {fileID: 1577679465}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2599effab47964d43a19558d57a0c5c9, type: 3}
 --- !u!1 &794566095
@@ -647,7 +652,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 39539293}
-  m_Father: {fileID: 1577679466}
+  m_Father: {fileID: 1039044824}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -715,6 +720,61 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &1039044822
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1039044824}
+  - component: {fileID: 1039044823}
+  m_Layer: 0
+  m_Name: Timer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1039044823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039044822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e952f2076a2264d43bb938fa22ec7893, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skin: {fileID: 11400000, guid: e11bfa83d7841fe4ebbc0bb4e5345507, type: 2}
+  timerRect:
+    serializedVersion: 2
+    x: 10
+    y: 10
+    width: 0
+    height: 0
+  endOfTime: {fileID: 39539291}
+  defaultColorTimer: {r: 1, g: 1, b: 1, a: 1}
+  warningColorTimer: {r: 1, g: 0, b: 0, a: 1}
+  startTime: 10
+--- !u!4 &1039044824
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039044822}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.3413701, y: -10.512926, z: 8.998369}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 963033764}
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1089091939
 GameObject:
   m_ObjectHideFlags: 0
@@ -1162,17 +1222,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 586bc56a23e90654da392dd4d0eb2f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skin: {fileID: 11400000, guid: e11bfa83d7841fe4ebbc0bb4e5345507, type: 2}
-  timerRect:
-    serializedVersion: 2
-    x: 35
-    y: 35
-    width: 350
-    height: 350
-  endOfTime: {fileID: 39539291}
-  defaultColorTimer: {r: 1, g: 1, b: 1, a: 1}
-  warningColorTimer: {r: 1, g: 0, b: 0, a: 1}
-  startTime: 10
+  currentScore: 0
+  highScore: 0
+  currentLevel: 0
+  unlockedLevel: 0
 --- !u!4 &1577679466
 Transform:
   m_ObjectHideFlags: 0
@@ -1183,8 +1236,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 963033764}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
