@@ -273,7 +273,7 @@ GameObject:
   - component: {fileID: 514566209}
   m_Layer: 0
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -579,7 +579,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 13400000, guid: 8e47ac962d4be1746a383c4582e70dbd,
+      objectReference: {fileID: 13400000, guid: 06a3d3ff76837ee488a953b19dad211e,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 994e7a55699c57944947256650124ff5, type: 3}

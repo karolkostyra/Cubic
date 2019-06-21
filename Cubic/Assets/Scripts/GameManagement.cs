@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
@@ -14,7 +13,6 @@ public class GameManagement : MonoBehaviour
     void Start()
     {
         currentLevel = SceneManager.GetActiveScene().buildIndex;
-        Debug.Log(currentLevel);
     }
 
 

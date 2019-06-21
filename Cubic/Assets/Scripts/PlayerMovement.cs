@@ -3,18 +3,17 @@
 
 public class PlayerMovement : MonoBehaviour
 {
-    public GameManagement manager;
-
     Rigidbody rb;
+
+    public GameManagement manager;
     public float moveSpeed;
-    public bool jumpAvailability = true;
+    public bool jumpAvailability;
     public GameObject deathParticles;
     
     private float maxSpeed = 5f;
+    private bool isGrounded;
     private Vector3 input;
     private Vector3 spawn;
-
-    private bool isGrounded;
 
 
     void Start()
@@ -33,12 +32,11 @@ public class PlayerMovement : MonoBehaviour
             rb.AddRelativeForce(input * moveSpeed);
         }
 
-        if (Input.GetKeyDown("space") & isGrounded & jumpAvailability)
+
+        if (Input.GetKeyDown("space") && isGrounded && jumpAvailability)
         {
             Vector3 up = transform.TransformDirection(Vector3.up);
             rb.AddForce(up * 10, ForceMode.Impulse);
-            isGrounded = false;
-            
         }
 
         if (transform.position.y < -2)
@@ -56,16 +54,18 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-
+    
     private void OnCollisionStay(Collision collision)
     {
-        isGrounded = true;
+        if(collision.transform.tag == "Ground")
+            isGrounded = true;
     }
 
 
     private void OnCollisionExit(Collision collision)
     {
-        isGrounded = false;
+        if (collision.transform.tag == "Ground")
+            isGrounded = false;
     }
 
 
@@ -78,7 +78,6 @@ public class PlayerMovement : MonoBehaviour
 
         if (other.transform.tag == "Goal")
         {
-            //GameManagement.CompleteLevel();
             manager = manager.GetComponent<GameManagement>();
             manager.CompleteLevel();
         }
