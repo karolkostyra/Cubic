@@ -63,17 +63,31 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        
+
         if (collision.transform.tag == "Enemy")
             Die();
     }
 
-
+    
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.transform.tag == "Ground")
-            isGrounded = true;
-    }
+        //if (collision.transform.tag == "Ground")
+        //isGrounded = true;
 
+        if (collision.contacts.Length > 0)
+        {
+            ContactPoint contact = collision.contacts[0];
+            if (Vector3.Dot(contact.normal, Vector3.up) > 0.5)
+            {
+                isGrounded = true;
+                //collision was from below
+            }
+            //else
+                //isGrounded = false;
+        }
+    }
+    
 
     private void OnCollisionExit(Collision collision)
     {
