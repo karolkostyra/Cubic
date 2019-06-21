@@ -30,6 +30,9 @@ EditorBuildSettings:
     path: Assets/Levels/Level_07.unity
     guid: 8c1540d1567760944a342c4757721aa7
   - enabled: 1
+    path: Assets/Levels/Level_08_PlayerController_rotate.unity
+    guid: da47bcac8201bea4999a964bb4965691
+  - enabled: 1
     path: Assets/Levels/EndMenu.unity
     guid: 67d71361dace6534e92e71bec29fe7a0
   m_configObjects: {}

@@ -1,22 +1,25 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-
-public class PlayerMovement : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
-    Rigidbody rb;
+    private Rigidbody rb;
 
     public GameManagement manager;
-    public float moveSpeed;
+    public float rotationRate = 180;
+    public float moveSpeed = .1f;
     public bool jumpAvailability;
     public GameObject deathParticles;
-    
-    private float maxSpeed = 5f;
+
     private bool isGrounded;
     private Vector3 input;
     private Vector3 spawn;
+    private string moveInputAxis = "Vertical";
+    private string turnInputAxis = "Horizontal";
 
 
-    void Start()
+    private void Start()
     {
         rb = GetComponent<Rigidbody>();
         spawn = transform.position;
@@ -25,28 +28,13 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+        float moveAxis = Input.GetAxis(moveInputAxis);
+        float turnAxis = Input.GetAxis(turnInputAxis);
 
-        /*CharacterController controller = GetComponent<CharacterController>();
-        if (transform != null)
-        {
-            if (manager.currentLevel >= 7)
-            {
-                transform.Rotate(0, Input.GetAxis("Horizontal") * turnSpeed, 0);
-                var forward = transform.TransformDirection(Vector3.forward);
-                float curSpeed = moveSpeed * Input.GetAxis("Vertical");
-                characterController.SimpleMove(forward * curSpeed);
-            }
-        }
-        */
+        Move(moveAxis);
+        Turn(turnAxis);
 
-        if (rb.velocity.magnitude < maxSpeed)
-        {
-            rb.AddRelativeForce(input * moveSpeed);
-        }
-
-        
-        if (Input.GetKeyDown("space") && isGrounded && jumpAvailability)
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded && jumpAvailability)
         {
             Vector3 up = transform.TransformDirection(Vector3.up);
             rb.AddForce(up * 10, ForceMode.Impulse);
@@ -56,22 +44,33 @@ public class PlayerMovement : MonoBehaviour
         if (transform.position.y < -2)
         {
             Die();
+            transform.rotation = Quaternion.identity; //to reset rotation
         }
+    }
+
+
+    private void Move(float input)
+    {
+        transform.Translate(Vector3.forward * input * moveSpeed);
+    }
+
+
+    private void Turn(float input)
+    {
+        transform.Rotate(0, input * rotationRate * Time.deltaTime, 0);
     }
 
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.tag == "Enemy")
-        {
             Die();
-        }
     }
 
-    
+
     private void OnCollisionStay(Collision collision)
     {
-        if(collision.transform.tag == "Ground")
+        if (collision.transform.tag == "Ground")
             isGrounded = true;
     }
 
@@ -86,9 +85,7 @@ public class PlayerMovement : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.tag == "Enemy")
-        {
             Die();
-        }
 
         if (other.transform.tag == "Goal")
         {

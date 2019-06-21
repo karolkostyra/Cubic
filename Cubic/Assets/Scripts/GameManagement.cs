@@ -25,7 +25,7 @@ public class GameManagement : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene(8);
+            SceneManager.LoadScene(SceneManager.sceneCountInBuildSettings - 1);
         }
     }
 }
