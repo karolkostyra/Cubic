@@ -70,9 +70,7 @@ public class PlayerController : MonoBehaviour
     
     private void OnCollisionStay(Collision collision)
     {
-        //if (collision.transform.tag == "Ground")
-        //isGrounded = true;
-        if (collision.transform.tag == "Ground")
+        if (collision.transform.tag == "Ground" || collision.transform.tag == "Wall")
         {
             if (collision.contacts.Length > 0)
             {
@@ -80,10 +78,7 @@ public class PlayerController : MonoBehaviour
                 if (Vector3.Dot(contact.normal, Vector3.up) > 0)
                 {
                     isGrounded = true;
-                    //collision was from below
                 }
-                //else
-                //isGrounded = false;
             }
         }
     }
@@ -91,7 +86,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.transform.tag == "Ground")
+        if (collision.transform.tag == "Ground" || collision.transform.tag == "Wall")
             isGrounded = false;
     }
 
