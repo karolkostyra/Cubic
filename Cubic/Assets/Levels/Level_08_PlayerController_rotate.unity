@@ -896,12 +896,12 @@ PrefabInstance:
     - target: {fileID: 7701852789991282870, guid: 994e7a55699c57944947256650124ff5,
         type: 3}
       propertyPath: m_Name
-      value: Wall
+      value: Wall 01
       objectReference: {fileID: 0}
     - target: {fileID: 7701852789991282870, guid: 994e7a55699c57944947256650124ff5,
         type: 3}
       propertyPath: m_TagString
-      value: Ground
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 8495655499780691115, guid: 994e7a55699c57944947256650124ff5,
         type: 3}
@@ -1057,12 +1057,12 @@ PrefabInstance:
     - target: {fileID: 7701852789991282870, guid: 994e7a55699c57944947256650124ff5,
         type: 3}
       propertyPath: m_Name
-      value: Wall (1)
+      value: Wall 02
       objectReference: {fileID: 0}
     - target: {fileID: 7701852789991282870, guid: 994e7a55699c57944947256650124ff5,
         type: 3}
       propertyPath: m_TagString
-      value: Ground
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 8495655499780691115, guid: 994e7a55699c57944947256650124ff5,
         type: 3}
