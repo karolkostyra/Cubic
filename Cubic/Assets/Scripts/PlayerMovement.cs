@@ -8,8 +8,9 @@ public class PlayerMovement : MonoBehaviour
     public GameManagement manager;
     public float moveSpeed;
     public bool jumpAvailability;
+    public static bool canMove = true;
     public GameObject deathParticles;
-    
+
     private float maxSpeed = 5f;
     private bool isGrounded;
     private Vector3 input;
@@ -27,31 +28,16 @@ public class PlayerMovement : MonoBehaviour
     {
         input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
 
-        /*CharacterController controller = GetComponent<CharacterController>();
-        if (transform != null)
-        {
-            if (manager.currentLevel >= 7)
-            {
-                transform.Rotate(0, Input.GetAxis("Horizontal") * turnSpeed, 0);
-                var forward = transform.TransformDirection(Vector3.forward);
-                float curSpeed = moveSpeed * Input.GetAxis("Vertical");
-                characterController.SimpleMove(forward * curSpeed);
-            }
-        }
-        */
-
-        if (rb.velocity.magnitude < maxSpeed)
+        if (canMove && rb.velocity.magnitude < maxSpeed)
         {
             rb.AddRelativeForce(input * moveSpeed);
         }
-
         
         if (Input.GetKeyDown("space") && isGrounded && jumpAvailability)
         {
             Vector3 up = transform.TransformDirection(Vector3.up);
             rb.AddForce(up * 10, ForceMode.Impulse);
         }
-
 
         if (transform.position.y < -2)
         {
@@ -71,8 +57,6 @@ public class PlayerMovement : MonoBehaviour
     
     private void OnCollisionStay(Collision collision)
     {
-        //if(collision.transform.tag == "Ground")
-        //  isGrounded = true;
         if (collision.transform.tag == "Ground" || collision.transform.tag == "Wall")
         {
             if (collision.contacts.Length > 0)

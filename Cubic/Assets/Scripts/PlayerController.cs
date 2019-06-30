@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public float rotationRate = 180;
     public float moveSpeed = .1f;
     public bool jumpAvailability;
+    public static bool canMove = true;
     public GameObject deathParticles;
 
     private bool isGrounded;
@@ -31,15 +32,17 @@ public class PlayerController : MonoBehaviour
         float moveAxis = Input.GetAxis(moveInputAxis);
         float turnAxis = Input.GetAxis(turnInputAxis);
 
-        Move(moveAxis);
-        Turn(turnAxis);
+        if (canMove)
+        {
+            Move(moveAxis);
+            Turn(turnAxis);
+        }
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded && jumpAvailability)
         {
             Vector3 up = transform.TransformDirection(Vector3.up);
             rb.AddForce(up * 10, ForceMode.Impulse);
         }
-
 
         if (transform.position.y < -2)
         {
